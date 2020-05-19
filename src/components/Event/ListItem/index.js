@@ -5,10 +5,10 @@ const EventListItem = (props) => {
   const { name, date, createdBy, commentsCount} = props.item;
   return(
     <tr>
-      <td class="list-item">{name}</td>
-      <td class="list-item">{date}</td>
-      <td class="list-item">{createdBy}</td>
-      <td class="list-item">{commentsCount}</td>
+      <td className="list-item">{name}</td>
+      <td className="list-item">{date}</td>
+      <td className="list-item">{createdBy}</td>
+      <td className="list-item">{commentsCount}</td>
     </tr>
    );
 }

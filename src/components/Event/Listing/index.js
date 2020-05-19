@@ -22,7 +22,7 @@ const EventsListing = (props) => {
     <table class="events-table">
       <thead>
       <tr>
-        <th class="events-table__heading">Event Name </th>
+        <th className="events-table__heading">Event Name </th>
         <th class="events-table__heading">Date</th>
         <th class="events-table__heading">Created By </th>
         <th class="events-table__heading">Comments Count</th>
