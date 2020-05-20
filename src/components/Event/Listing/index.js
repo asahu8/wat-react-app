@@ -9,7 +9,7 @@ const EventsListing = (props) => {
 
   useEffect(() => {
     async function fetchEvents() {
-      const response = await fetch('http://localhost:3000/events');
+      const response = await fetch('http://localhost:4001/events');
       response.json().then(result => {
         console.log(result);
         setEvents(result.data)
