@@ -1,11 +1,7 @@
 import React from 'react'
 import './style.css';
-/**
-* @author
-* @function Card
-**/
 
-const Card = (props) => {
+const Card = (props: any) => {
   return(
   <div className="card"> {props.children} </div>
    )

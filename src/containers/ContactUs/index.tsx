@@ -1,11 +1,6 @@
 import React from 'react'
 
-/**
-* @author
-* @function ContactUs
-**/
-
-const ContactUs = (props) => {
+const ContactUs = (props: any) => {
   return(
     <div>Contact US got loaded </div>
    )

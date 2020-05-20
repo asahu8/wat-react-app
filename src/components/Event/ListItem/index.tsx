@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.scss';
 
-const EventListItem = (props) => {
+const EventListItem = (props: any) => {
   const { name, date, createdBy, commentsCount} = props.item;
   return(
     <tr>

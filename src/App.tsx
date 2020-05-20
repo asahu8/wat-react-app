@@ -5,16 +5,16 @@ import Header from './components/Header';
 import ContactUs from './containers/ContactUs';
 import EventDashboard from './components/Event/Dashboard';
 import ContributorListing from './components/Contributor/Listing';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { EventProvider } from './context/EventsContext';
-
+// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import EventListToggleProvider from './context/EventListToggleContext';
 
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
-      <EventProvider>
+      <EventListToggleProvider>
         <Header />
         <Switch>
           <div className="container">
@@ -24,9 +24,9 @@ function App() {
             <Route path="/contact-us" component={ContactUs} />
           </div>
         </Switch>
-        </EventProvider>
+        </EventListToggleProvider>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

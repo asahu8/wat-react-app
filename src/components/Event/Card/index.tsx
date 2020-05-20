@@ -1,13 +1,12 @@
 import React, { useContext } from 'react'
-import { EventsContext } from '../../../context/EventsContext';
+import { EventListToggleContext } from '../../../context/EventListToggleContext';
 
-const EventCard = (props) => {
+const EventCard = (props: any) => {
   const { cardType, totalEvents } = props;
-  const { showEventsListingToggle, } = useContext(EventsContext);
-  const [ showEvents, setshowEvents ] = showEventsListingToggle;
+  const { showEvents, toggleEventView } = useContext(EventListToggleContext);
 
   const toggleEventListing = () => {
-    setshowEvents(!showEvents);
+    toggleEventView(!showEvents);
   }
 
   const getCardLabel = () => {

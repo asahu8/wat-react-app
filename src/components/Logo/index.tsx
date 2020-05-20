@@ -6,10 +6,10 @@ import './style.css'
 * @function Logo
 **/
 
-const Logo = (props) => {
+const Logo = () => {
   return(
     <div className="logo">
-      <a href="javascript:void(0)"> Brand Logo </a>
+      <button> Brand Logo </button>
     </div>
    )
   }

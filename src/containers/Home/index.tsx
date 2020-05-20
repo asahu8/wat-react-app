@@ -3,7 +3,7 @@ import './style.css';
 import Footer from  '../../components/Footer';
 
 
-const Home = props => {
+const Home = () => {
   let footerContent = "WAT App 2019. All Rights Reserved";
   return (
   <div>

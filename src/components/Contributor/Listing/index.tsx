@@ -1,7 +1,6 @@
 import React from 'react'
 
-
-const ContributorListing = (props) => {
+const ContributorListing = () => {
   return(
     <div>
       ContributorListing

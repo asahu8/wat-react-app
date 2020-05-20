@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css';
 
-const Footer = (props) => {
+const Footer = (props: any) => {
   return(
     <div className="Footer">{props.content}</div>
    )
