@@ -1,6 +1,5 @@
-import React, { useState, useContext}  from 'react'
+import React, { useState }  from 'react'
 import { useForm } from "react-hook-form";
-import { EventListToggleContext } from '../../../context/EventListToggleContext';
 import ValidationError from '../../Validation/ValidationError';
 import { Event } from '../../../model/event';
 import { Redirect } from 'react-router-dom';
@@ -24,7 +23,6 @@ const EventSetup = (props: any) => {
     splicedFormFields.push(formFields.splice(0, 2));
   }
    const [redirect, setRedirect] = useState(false);
-   const { showEvents, toggleEventView }  = useContext(EventListToggleContext);
    const eventService = new EventService();
 
   const onSubmit = (data: any) => {
@@ -38,7 +36,6 @@ const EventSetup = (props: any) => {
       .then((result: any) => {
         console.log('saved event successfully');
         console.log(result);
-        toggleEventView(showEvents);
         setRedirect(true);
     });
   }

@@ -7,6 +7,10 @@ export class EventService {
     return await fetch(`${this.BASE_URL}/events`);
   }
 
+  async getEventCards() {
+    return await fetch(`${this.BASE_URL}/event-cards`);
+  }
+
   saveEvent(event: Event) {
     const requestOptions = {
       method: 'POST',

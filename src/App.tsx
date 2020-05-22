@@ -9,6 +9,7 @@ import ContributorListing from './components/Contributor/Listing';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import EventListToggleProvider from './context/EventListToggleContext';
 import EventSetup from './components/Event/Setup';
+import EventsListing from './components/Event/Listing';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <div className="container">
             <Route path ='/' component={Home} />
             <Route path="/events"  component={EventDashboard}  />
+            <Route path="/events-list" component={EventsListing} />
             <Route path="/contributors" component={ContributorListing} />
             <Route path="/contact-us" component={ContactUs} />
             <Route path="/event-setup" component={EventSetup} />

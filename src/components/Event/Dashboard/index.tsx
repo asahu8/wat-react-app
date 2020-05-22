@@ -1,30 +1,26 @@
 import React, { useContext, useEffect } from 'react'
 import './style.scss';
 import Footer from '../../Footer';
-
 import { EventListToggleContext } from '../../../context/EventListToggleContext'
-import EventsListing from '../Listing';
 import EventCard from '../Card';
 import SetupButton from '../SetupButton';
-
+import { EventService } from '../../../services/EventService';
 
 const EventDashboard = () => {
   const { eventCardDetails, assignEventCardDetails } = useContext(EventListToggleContext);
-
   const footerContent = "We are proud of what we do, and we do what we are proud of.....";
-  const PAST_CARD = 'past';
-  const FUTURE_CARD = 'future';
+  let eventService: EventService = new EventService();
 
   useEffect(() => {
-    async function fetchEventCards() {
-      const response = await fetch("http://localhost:4001/event-cards");
-      response.json().then(result => {
-        console.log(result);
-        assignEventCardDetails(result.data);
-      });
+    async function getAll() {
+      let data = await eventService.getEventCards();
+      data.json().then((response: any) => {
+        assignEventCardDetails(response.data);
+      })
     }
-    fetchEventCards();
+    getAll();
   }, []);
+
 
   const renderDashboard = () => {
     return (
@@ -41,11 +37,9 @@ const EventDashboard = () => {
     )
   }
 
-  const {showEvents} = useContext(EventListToggleContext);
-
   return(
     <div className="events">
-      {showEvents ? <EventsListing /> : renderDashboard() }
+      { renderDashboard() }
       <Footer content={footerContent}/>
     </div>
    )

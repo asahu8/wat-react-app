@@ -2,9 +2,9 @@ import React, { useState,  createContext } from 'react'
 
 
 type eventDisplayState = {
-    showEvents: boolean;
+//    showEvents: boolean;
+// toggleEventView: any,
     eventsList: any;
-    toggleEventView: any,
     assignEventsList: any;
     eventCardDetails: Array<EventCardState>;
     assignEventCardDetails: any;
@@ -17,8 +17,8 @@ type EventCardState =  {
 }
 
 export const EventListToggleContext =  createContext<eventDisplayState>({
-    showEvents: false,
-    toggleEventView: null,
+    // showEvents: false,
+    // toggleEventView: null,
     eventsList: [],
     assignEventsList: null,
     eventCardDetails: new Array<EventCardState>(),
@@ -26,11 +26,11 @@ export const EventListToggleContext =  createContext<eventDisplayState>({
 });
 
 function EventListToggleProvider(props: any) {
-    const [showEvents, setShowEvents] = useState(false);
+    // const [showEvents, setShowEvents] = useState(false);
     const [eventsList, setEventsList] = useState([]);
     const [eventCardDetails, setEventCardDetails] = useState([]);
 
-    const toggleEventView = () => setShowEvents(!showEvents);
+    // const toggleEventView = () => setShowEvents(!showEvents);
     const assignEventsList = (e: any) =>
         setEventsList(e);
     const assignEventCardDetails = (e: any) =>
@@ -39,7 +39,7 @@ function EventListToggleProvider(props: any) {
 
     return (
         <EventListToggleContext.Provider
-            value={{ showEvents, toggleEventView, eventsList, assignEventsList, eventCardDetails, assignEventCardDetails}}>
+            value={{eventsList, assignEventsList, eventCardDetails, assignEventCardDetails}}>
             {props.children}
         </EventListToggleContext.Provider>
     );
