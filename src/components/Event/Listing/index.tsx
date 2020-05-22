@@ -2,21 +2,21 @@ import React, { useEffect, useContext} from 'react'
 import { EventListToggleContext } from '../../../context/EventListToggleContext';
 import EventListItem from '../ListItem';
 import './style.scss';
-
+import { EventService } from '../../../services/EventService';
 
 const EventsListing = () => {
   const {eventsList, assignEventsList } = useContext(EventListToggleContext);
+  const eventService =  new EventService();
 
-  useEffect(() => {
-    async function fetchEvents() {
-      const response = await fetch('http://localhost:4001/events');
-      response.json().then(result => {
-        console.log(result);
-        assignEventsList(result.data)
-      });
-    }
-    fetchEvents();
-  }, []);
+    useEffect(() => {
+      async function getAll() {
+        let data = await eventService.getAllEvents();
+        data.json().then((response: any) => {
+          assignEventsList(response.data)
+        })
+      }
+      getAll();
+    }, []);
 
   return(
       <table className="events-table">

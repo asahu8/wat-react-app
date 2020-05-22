@@ -5,6 +5,7 @@ import Footer from '../../Footer';
 import { EventListToggleContext } from '../../../context/EventListToggleContext'
 import EventsListing from '../Listing';
 import EventCard from '../Card';
+import SetupButton from '../SetupButton';
 
 
 const EventDashboard = () => {
@@ -28,9 +29,7 @@ const EventDashboard = () => {
   const renderDashboard = () => {
     return (
       <div>
-      <div className='events__wrapper'>
-        <button className="events__create"> + Create new event </button>
-      </div>
+      <SetupButton />
       <div className='events__block'>
         {
         eventCardDetails.map(eventCard => {
