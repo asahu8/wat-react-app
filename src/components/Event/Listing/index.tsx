@@ -2,20 +2,20 @@ import React, { useEffect, useContext} from 'react'
 import { EventListToggleContext } from '../../../context/EventListToggleContext';
 import EventListItem from '../ListItem';
 import './style.scss';
-
+import { EventService } from '../../../services/EventService';
 
 const EventsListing = () => {
   const {eventsList, assignEventsList } = useContext(EventListToggleContext);
+  const eventService =  new EventService();
 
   useEffect(() => {
-    async function fetchEvents() {
-      const response = await fetch('http://localhost:4001/events');
-      response.json().then(result => {
-        console.log(result);
-        assignEventsList(result.data)
-      });
+    async function getAll() {
+      let data = await eventService.getAllEvents();
+      data.json().then((response: any) => {
+        assignEventsList(response)
+      })
     }
-    fetchEvents();
+    getAll();
   }, []);
 
   return(
@@ -24,8 +24,13 @@ const EventsListing = () => {
       <tr>
         <th className="events-table__heading">Event Name </th>
         <th className="events-table__heading">Date</th>
+        <th className="events-table__heading">budget</th>
+        <th className="events-table__heading">items</th>
+        <th className="events-table__heading">description</th>
+        <th className="events-table__heading">location</th>
         <th className="events-table__heading">Created By </th>
         <th className="events-table__heading">Comments Count</th>
+        <th className="events-table__heading">Action</th>
       </tr>
       </thead>
       <tbody>

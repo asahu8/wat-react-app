@@ -1,0 +1,63 @@
+.event-setup-container {
+  display: flex;
+  width: 100%;
+}
+
+.event-setup {
+  margin: 2rem auto;
+  width: 60%;
+
+  .double-div{
+    display: flex;
+  }
+  .event-submit{
+    display: flex;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 1rem 4rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    background-color: #2185D0;
+    color: #FFF;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.form-element {
+  width: 50%;
+  padding: 0.5rem 1rem;
+
+  p {
+    color: #721a1a;
+    margin: 0;
+  }
+  input {
+    border: none;
+  }
+  input.invalid {
+    border: solid #FF0000;
+  }
+
+  .even-field {
+    text-align: left;
+  }
+
+  .odd-field {
+    text-align: right;
+  }
+
+  label { font-size: 0.9rem; }
+
+  input {
+    line-height: 2rem;
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+    height: 140px;
+  }
+
+}

@@ -1,48 +1,46 @@
 import React, { useState,  createContext } from 'react'
-
-
-type eventDisplayState = {
-    showEvents: boolean;
-    eventsList: any;
-    toggleEventView: any,
-    assignEventsList: any;
-    eventCardDetails: Array<EventCardState>;
-    assignEventCardDetails: any;
-}
+import { Event } from '../model/event';
 
 type EventCardState =  {
-    cardType: string;
-    cardName: string;
-    eventCount: number;
+  cardType: string;
+  cardName: string;
+  eventCount: number;
 }
 
+type eventDisplayState = {
+  eventsList: any;
+  assignEventsList: any;
+  eventCardDetails: Array<EventCardState>;
+  assignEventCardDetails: any;
+  event: any,
+  assignEvent: any
+}
+
+
 export const EventListToggleContext =  createContext<eventDisplayState>({
-    showEvents: false,
-    toggleEventView: null,
-    eventsList: [],
-    assignEventsList: null,
-    eventCardDetails: new Array<EventCardState>(),
-    assignEventCardDetails: null
+  eventsList: [],
+  assignEventsList: null,
+  eventCardDetails: new Array<EventCardState>(),
+  assignEventCardDetails: null,
+  event: new Event(),
+  assignEvent: null
 });
 
 function EventListToggleProvider(props: any) {
-    const [showEvents, setShowEvents] = useState(false);
-    const [eventsList, setEventsList] = useState([]);
-    const [eventCardDetails, setEventCardDetails] = useState([]);
+  const [eventsList, setEventsList] = useState([]);
+  const [eventCardDetails, setEventCardDetails] = useState([]);
+  const [event, setEvent] = useState({});
 
-    const toggleEventView = () => setShowEvents(!showEvents);
-    const assignEventsList = (e: any) =>
-        setEventsList(e);
-    const assignEventCardDetails = (e: any) =>
-        setEventCardDetails(e);
+  const assignEventsList = (e: any) => setEventsList(e);
+  const assignEventCardDetails = (e: any) => setEventCardDetails(e);
+  const assignEvent = (e: any) => { setEvent(e); }
 
-
-    return (
-        <EventListToggleContext.Provider
-            value={{ showEvents, toggleEventView, eventsList, assignEventsList, eventCardDetails, assignEventCardDetails}}>
-            {props.children}
-        </EventListToggleContext.Provider>
-    );
+  return (
+    <EventListToggleContext.Provider
+      value={{eventsList, assignEventsList, eventCardDetails, assignEventCardDetails, event, assignEvent}}>
+      {props.children}
+    </EventListToggleContext.Provider>
+  );
 }
 
 

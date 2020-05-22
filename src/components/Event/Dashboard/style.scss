@@ -8,14 +8,16 @@
   }
 
   &__create {
-    background-color: #ff3b71;
-    color: #FFFFFF;
-    font-size: 0.7rem;
-    font-weight: bold;
-    padding: 10px 8px;
+    background-color: #FF3B71;
+    color: #FAFBFC;
     border-radius: 4px;
     border: none;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    font-family: 'PT Sans', sans-serif;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
   }
 
   &__past {
@@ -30,13 +32,19 @@
     display: flex;
     justify-content: space-between;
     margin: 35px 0px;
+
     h2 {
-      text-transform: capitalize;
+      font-family: 'PT Sans', sans-serif;
+      color: #FAFBFC;
     }
+
   }
 
   &__individual-block {
-    padding: 20px 50px;
+    padding: 2rem 5rem;
+    border-radius: 6px;
+    border: none;
+
   }
 
   &__individual-block:hover {
