@@ -30,6 +30,9 @@
     display: flex;
     justify-content: space-between;
     margin: 35px 0px;
+    h2 {
+      text-transform: capitalize;
+    }
   }
 
   &__individual-block {
