@@ -19,7 +19,7 @@ function App() {
         <Header />
         <Switch>
           <div className="container">
-            <Route path ='/' component={Home} />
+            <Route path ='/' exact component={Home} />
             <Route path="/events"  component={EventDashboard}  />
             <Route path="/events-list" component={EventsListing} />
             <Route path="/contributors" component={ContributorListing} />

@@ -1,15 +1,4 @@
-export interface IEvent {
-  id: number;
-  name: string,
-  budget: number,
-  description: string,
-  items: string;
-  eventDate: string;
-  location: string;
-}
-
-
-export class Event implements IEvent {
+export class Event {
   id: number;
   name: string
   budget: number
