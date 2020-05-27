@@ -16,7 +16,6 @@ type eventDisplayState = {
   assignEvent: any
 }
 
-
 export const EventListToggleContext =  createContext<eventDisplayState>({
   eventsList: [],
   assignEventsList: null,
@@ -42,6 +41,5 @@ function EventListToggleProvider(props: any) {
     </EventListToggleContext.Provider>
   );
 }
-
 
 export default  EventListToggleProvider;
