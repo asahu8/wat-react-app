@@ -11,16 +11,14 @@ const EventDashboard = () => {
   const footerContent = "We are proud of what we do, and we do what we are proud of.....";
   let eventService: EventService = new EventService();
 
-  useEffect(() => {
-    async function getAll() {
-      let data = await eventService.getEventCards();
-      data.json().then((response: any) => {
-        assignEventCardDetails(response.data);
-      })
-    }
-    getAll();
-  }, []);
+  async function getAll() {
+    let data = await eventService.getEventCards();
+    data.json().then((response: any) => {
+      assignEventCardDetails(response.data);
+    })
+  }
 
+  useEffect(() => { getAll(); }, []);
 
   const renderDashboard = () => {
     return (

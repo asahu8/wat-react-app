@@ -1,0 +1,46 @@
+.content {
+  border-top: 1px solid rgba(34,36,38,0.1);
+  width: 100%;
+  padding: 1em 1em;
+}
+
+.content h4 {
+  font-family: 'QuickSand';
+  color: rgba(0,0,0,0.68);
+  margin: 1px 0;
+  font-weight: normal;
+}
+
+.content h5 {
+  color: rgba(0,0,0,0.4);
+  margin: 1px 0;
+  font-weight: normal;
+}
+.contributor-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  background: #FFFFFF;
+  border-radius: 0.28571429rem;
+  padding: 0em;
+  width: 17%;
+  margin: 0 20px 30px 0;
+  border-radius: 0.28571429rem;
+  overflow: hidden;
+}
+
+.contributor-card .image img {
+  width: 100%
+}
+
+
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+  font-family: 'QuickSand';
+  font-size: 1.28571429em;
+  margin-top: -0.21425em;
+  line-height: 1.28571429em;
+}

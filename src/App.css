@@ -10,8 +10,7 @@ body {
 }
 
 .container {
-height: inherit;
-background-color: #6e9a8a;
+  background-color: #6e9a8a;
 }
 
 html, body {

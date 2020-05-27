@@ -1,17 +1,20 @@
 .header {
   display: flex;
-  justify-content: space-between;
   margin: 0 auto;
   width: 100%;
   background-color: #000000;
-  padding: 1.5rem 0.5rem
+  padding: 0.5rem 0.5rem;
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+.headerMenu {
+  margin-top: 15px;
+}
 
 .headerMenu a {
   display: inline-block;
   margin: 0 10px ;
-  color: #FAFBFC;
+  color: rgba(255,255,255,0.7) !important;
   text-decoration: none;
   text-transform: capitalize;
   font-size: 1rem;
@@ -20,5 +23,11 @@
 }
 
 .headerMenu a:hover {
-  color: #ff9ea0
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.15);
+  border-radius: 0.28571429rem;
+}
+
+.header img {
+  width: 95px;
 }

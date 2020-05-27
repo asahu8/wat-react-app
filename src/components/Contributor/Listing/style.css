@@ -1,0 +1,15 @@
+.contributors h1 {
+  font-size: 2em;
+}
+
+.contributors-content {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.contributors {
+  margin: 0 16%;
+  display: grid;
+}
