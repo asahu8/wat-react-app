@@ -1,28 +1,31 @@
 export interface IEvent {
+  id: number;
   name: string,
-  estimatedBudget: number,
+  budget: number,
   description: string,
-  itemCategories: string;
+  items: string;
   eventDate: string;
   location: string;
 }
 
 
 export class Event implements IEvent {
+  id: number;
   name: string
-  estimatedBudget: number
+  budget: number
   description: string
-  itemCategories: string;
+  items: string;
   eventDate: string
   location: string
 
-  constructor(obj: any) {
-    this.name = obj.name;
-    this.estimatedBudget = obj.estimatedBudget;
-    this.description = obj.description;
-    this.itemCategories = obj.itemCategories;
-    this.eventDate = obj.eventDate;
-    this.location = obj.location
+  constructor(obj?: any) {
+    this.id = obj && obj.id;
+    this.name = obj && obj.name;
+    this.budget = obj && obj.budget;
+    this.description = obj && obj.description;
+    this.items =  obj && obj.items;
+    this.eventDate =  obj && obj.eventDate;
+    this.location =  obj &&  obj.location
   }
 
   isPastEvent() {

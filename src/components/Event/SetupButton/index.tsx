@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SetupButton =  () => {
   return (
-    <Link to="/event-setup">
+    <Link to="/add-event">
       <div className='events__wrapper'>
         <button className="events__create"> + Create new event </button>
       </div>
