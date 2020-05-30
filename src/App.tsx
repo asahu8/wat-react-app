@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css'
 
 import EventListToggleProvider from './context/EventListToggleContext';
 
