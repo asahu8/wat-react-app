@@ -11,6 +11,7 @@ body {
 
 .container {
   background-color: #6e9a8a;
+  height: 100%;
 }
 
 html, body {

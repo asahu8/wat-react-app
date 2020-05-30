@@ -10,28 +10,33 @@ const EditEvent = (props: any) => {
   const { assignEvent } = useContext(EventListToggleContext);
   const [fetchedEvent, setFetchedEvent] = useState({});
   const history = useHistory();
+  const [loading, setLoading]  = useState(false);
+  const currentEventID = props.location.state.eventID;
 
   useEffect(() => {
-    async function fetchEvent(evenID: number) {
-      let response = await eventService.getEvent(evenID);
-      response.json().then((response: any) => {
-        assignEvent(response);
-        setFetchedEvent(response);
-      })
-    }
-    fetchEvent(props.location.state.eventID);
+    fetchCurrentEvent(currentEventID);
   }, []);
 
+  const fetchCurrentEvent = async(evenID: number) => {
+    let response = await eventService.getEvent(evenID);
+    response.json().then((response: any) => {
+      assignEvent(response);
+      setFetchedEvent(response);
+    })
+  }
+
   const updateEventHandler = (event: Event) => {
+    setLoading(true);
     const eventService = new EventService();
     eventService.updateEvent(event)
     .then((result: any) => {
+      setLoading(false);
       history.push("/events-list");
     });
   }
 
   return (
-    <EventForm event={ fetchedEvent } handleSubmit ={ updateEventHandler } buttonLabel={' Update Event' } />
+    <EventForm event={ fetchedEvent } handleSubmit ={ updateEventHandler } buttonLabel={'Update Event'}  loading={loading} />
    );
  }
 

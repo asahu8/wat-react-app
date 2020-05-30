@@ -27,7 +27,7 @@ const EventDashboard = () => {
       <div className='events__block'>
         {
         eventCardDetails.map(eventCard => {
-          return ( <EventCard cardType={ eventCard.cardType} cardTitle={eventCard.cardName} totalEvents= {eventCard.eventCount}/>)
+          return ( <EventCard cardType={ eventCard.cardType} cardTitle={eventCard.cardName} totalEvents= {eventCard.eventCount} key={eventCard.id} />)
         })
         }
       </div>

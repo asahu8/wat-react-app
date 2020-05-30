@@ -4,6 +4,7 @@ import { Event } from '../../../model/event';
 import { Redirect } from 'react-router-dom';
 import { EventService } from '../../../services/EventService';
 import { EventListToggleContext } from '../../../context/EventListToggleContext';
+import { Table } from 'semantic-ui-react'
 
 const EventListItem = (props: any) => {
   const { id, name, eventDate, createdBy, location, commentsCount, budget, items, description } = props.item;
@@ -12,6 +13,7 @@ const EventListItem = (props: any) => {
   const {eventsList, assignEventsList } = useContext(EventListToggleContext);
 
   const editEvent = () => { setRedirect(true); }
+
   function deleteHandler() {
     let data = eventService.removeEvent(id);
     data.then((response: any) => {
@@ -19,26 +21,26 @@ const EventListItem = (props: any) => {
       assignEventsList(updatedList);
     }, (error) => {
       console.log(error);
-      console.log('something went wrong')
+      console.log('something went wrong');
     });
   }
 
   return (
-    <tr>
-      <td className="list-item">{name}</td>
-      <td className="list-item">{eventDate}</td>
-      <td className="list-item">{budget}</td>
-      <td className="list-item">{items}</td>
-      <td className="list-item">{description}</td>
-      <td className="list-item">{location}</td>
-      <td className="list-item">{createdBy}</td>
-      <td className="list-item">{commentsCount}</td>
-      <td className="list-item">
-        <span onClick={() => editEvent()}> Edit </span> ||
-        <span onClick={() => deleteHandler()}> Delete </span>
-      </td>
-      {(redirect ? <Redirect to={{ pathname: "/edit-event", state: { eventID: id } }} /> : '')}
-    </tr>
+    <Table.Row>
+      <Table.Cell>{name}</Table.Cell>
+      <Table.Cell>{eventDate}</Table.Cell>
+      <Table.Cell>{budget}</Table.Cell>
+      <Table.Cell>{items}</Table.Cell>
+      <Table.Cell>{description}</Table.Cell>
+      <Table.Cell>{location}</Table.Cell>
+      <Table.Cell>{createdBy}</Table.Cell>
+      <Table.Cell>{commentsCount}</Table.Cell>
+      <Table.Cell>
+        <i className="edit icon" onClick={() => editEvent()} />
+        <i className="trash icon" onClick={() => deleteHandler()} />
+      </Table.Cell>
+        {(redirect ? <Redirect to={{ pathname: "/edit-event", state: { eventID: id } }} /> : '')}
+      </Table.Row>
   );
 }
 
