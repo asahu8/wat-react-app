@@ -2,6 +2,7 @@ import React, { useState,  createContext } from 'react'
 import { Event } from '../model/event';
 
 type EventCardState =  {
+  id: number,
   cardType: string;
   cardName: string;
   eventCount: number;

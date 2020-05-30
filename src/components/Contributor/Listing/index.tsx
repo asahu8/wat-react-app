@@ -13,7 +13,6 @@ const ContributorListing = () => {
   async function getContributors() {
     let data = await contributorService.getAllContributors();
     data.json().then((response: Contributor[]) => {
-      console.log(response);
       setContributors(response);
     })
   };
