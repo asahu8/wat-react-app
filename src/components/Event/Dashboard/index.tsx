@@ -1,20 +1,27 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './style.scss';
+import _ from 'lodash';
 import Footer from '../../Footer';
 import { EventListToggleContext } from '../../../context/EventListToggleContext'
 import EventCard from '../Card';
 import SetupButton from '../SetupButton';
 import { EventService } from '../../../services/EventService';
+import WatLoader from '../../UI/loader/wat-loader';
 
 const EventDashboard = () => {
   const { eventCardDetails, assignEventCardDetails } = useContext(EventListToggleContext);
+  const [loading, setLoading]  = useState(false);
   const footerContent = "We are proud of what we do, and we do what we are proud of.....";
   let eventService: EventService = new EventService();
 
-  async function getAll() {
+  async function prepareDashboard() {
     try {
+      setLoading(true);
      let response = await eventService.getEventCards();
-      assignEventCardDetails(response.data);
+      setTimeout(() => {
+        assignEventCardDetails(response.data);
+        setLoading(false);
+      }, 3000);
     }catch(error) {
       if(error.response) {
         console.log(error.response.data);
@@ -22,18 +29,21 @@ const EventDashboard = () => {
     }
   }
 
-  useEffect(() => { getAll(); }, []);
+  useEffect(() => {
+    // load the cards from backend only once
+    if( _.isEmpty(eventCardDetails)) { prepareDashboard(); }
+  }, []);
 
   const renderDashboard = () => {
     return (
       <div>
-      <SetupButton />
-      <div className='events__block'>
-        {
-        eventCardDetails.map(eventCard => {
-          return ( <EventCard cardType={ eventCard.cardType} cardTitle={eventCard.cardName} totalEvents= {eventCard.eventCount} key={eventCard.id} />)
-        })
-        }
+        <SetupButton />
+        <div className='events__block'>
+          {
+            eventCardDetails.map(eventCard => {
+              return (<EventCard cardType={ eventCard.cardType} cardTitle={eventCard.cardName} totalEvents= {eventCard.eventCount} key={eventCard.id} />)
+            })
+          }
       </div>
     </div>
     )
@@ -41,7 +51,7 @@ const EventDashboard = () => {
 
   return(
     <div className="events">
-      { renderDashboard() }
+      { loading ? <WatLoader/> : renderDashboard() }
       <Footer content={footerContent}/>
     </div>
    )

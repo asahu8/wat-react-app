@@ -28,7 +28,6 @@ function App() {
               <Route path ='/login' exact component={Login} />
             <PrivateRoute path ='/' exact component={Home} />
               <EventListToggleProvider>
-                {/* <Route path="/events"  component={EventDashboard}  /> */}
                 <PrivateRoute path='/events' component={EventDashboard} />
                 <PrivateRoute path="/events-list" component={EventsListing} />
                 <PrivateRoute path="/add-event" component={CreateEvent} />
