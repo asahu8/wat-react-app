@@ -19,13 +19,11 @@ const EventsListing = () => {
 
   const showAllEvents = async() => {
     setLoading(true);
-    let data = await eventService.getAllEvents();
-    data.json().then((response: any) => {
-      setTimeout(() => {
-        assignEventsList(response);
-        setLoading(false);
-      }, 3000);
-    });
+    let response = await eventService.getAllEvents();
+    setTimeout(() => {
+      assignEventsList(response.data);
+      setLoading(false);
+    }, 3000);
   }
 
   return(

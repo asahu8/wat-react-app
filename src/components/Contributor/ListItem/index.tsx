@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ContributorItem = (props: any) => {
   const {contributor} = props;
-  console.log(contributor);
+
   return(
     <div className='contributor-card'>
       <div className='image'>
