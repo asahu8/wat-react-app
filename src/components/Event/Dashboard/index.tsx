@@ -12,10 +12,14 @@ const EventDashboard = () => {
   let eventService: EventService = new EventService();
 
   async function getAll() {
-    let data = await eventService.getEventCards();
-    data.json().then((response: any) => {
+    try {
+     let response = await eventService.getEventCards();
       assignEventCardDetails(response.data);
-    })
+    }catch(error) {
+      if(error.response) {
+        console.log(error.response.data);
+      }
+    }
   }
 
   useEffect(() => { getAll(); }, []);
