@@ -7,26 +7,29 @@ import EventCard from '../Card';
 import SetupButton from '../SetupButton';
 import { EventService } from '../../../services/EventService';
 import WatLoader from '../../UI/loader/wat-loader';
+import Notification from '../../UI/notification/notification';
 
-const EventDashboard = () => {
+const EventDashboard = (props: any) => {
   const { eventCardDetails, assignEventCardDetails } = useContext(EventListToggleContext);
   const [loading, setLoading]  = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
   const footerContent = "We are proud of what we do, and we do what we are proud of.....";
   let eventService: EventService = new EventService();
 
   async function prepareDashboard() {
     try {
       setLoading(true);
-     let response = await eventService.getEventCards();
-      setTimeout(() => {
-        assignEventCardDetails(response.data);
-        setLoading(false);
-      }, 3000);
-    }catch(error) {
-      if(error.response) {
-        console.log(error.response.data);
+      let response = await eventService.getEventCards();
+      assignEventCardDetails(response.data);
+    }
+    catch(error) {
+      if(error.response.status === 401) {
+        setShowToast(true);
+        setToastMessage("Unauthorised access");
       }
     }
+    finally{ setTimeout(() => { setLoading(false)}, 2000); }
   }
 
   useEffect(() => {
@@ -34,9 +37,11 @@ const EventDashboard = () => {
     if( _.isEmpty(eventCardDetails)) { prepareDashboard(); }
   }, []);
 
+
   const renderDashboard = () => {
     return (
       <div>
+        { showToast && <Notification type="error" message= {toastMessage} /> }
         <SetupButton />
         <div className='events__block'>
           {
@@ -56,4 +61,5 @@ const EventDashboard = () => {
     </div>
    )
   }
+
 export default EventDashboard;
