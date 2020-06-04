@@ -15,7 +15,7 @@ const Header = () => {
   }
 
   return(
-    <header className="header">
+    <header className="wat-header">
       <img src={logo} alt='logo'/>
       <nav className="headerMenu">
         <div className='page-navs'>

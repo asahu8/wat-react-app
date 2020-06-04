@@ -1,9 +1,12 @@
-.header {
+.wat-header {
   display: flex;
   margin: 0 auto;
   width: 100%;
   background-color: #000000;
   padding: 0.5rem 0.5rem;
+  img {
+    width: 95px;
+  }
 }
 
 .headerMenu {
@@ -32,8 +35,4 @@
   color: #ffffff !important;
   background: none;
   cursor: pointer;
-}
-
-.header img {
-  width: 95px;
 }
