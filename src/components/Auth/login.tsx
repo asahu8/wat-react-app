@@ -7,7 +7,7 @@ import { useHistory } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
-  const [emailID, setEmailID] = useState('');
+  const [UsernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
   const [jwt, setJwt] = useState(null);
   const {signIn } = useContext(AuthContext);
@@ -17,7 +17,7 @@ const Login = () => {
   let authBody: Auth;
 
   const handleLogin = async() => {
-    authBody = { username:  emailID,  password: password };
+    authBody = { username_or_email:  UsernameOrEmail,  password: password };
 
     try {
       await authService.login(authBody);
@@ -43,7 +43,7 @@ const Login = () => {
           <div className="field form-field">
             <div className="ui left icon input">
               <i className="user icon"></i>
-              <input type="text" name="email" id="email" placeholder="E-mail address" onChange={(e)=>setEmailID(e.target.value)}/>
+              <input type="text" name="email" id="email" placeholder="Username or Email" onChange={(e)=>setUsernameOrEmail(e.target.value)}/>
             </div>
           </div>
           <div className="field form-field">
