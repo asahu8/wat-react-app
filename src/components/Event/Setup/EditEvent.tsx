@@ -19,20 +19,15 @@ const EditEvent = (props: any) => {
 
   const fetchCurrentEvent = async(evenID: number) => {
     let response = await eventService.getEvent(evenID);
-    response.json().then((response: any) => {
-      assignEvent(response);
-      setFetchedEvent(response);
-    })
+    assignEvent(response.data);
+    setFetchedEvent(response.data);
   }
 
-  const updateEventHandler = (event: Event) => {
+  const updateEventHandler = async(event: Event) => {
     setLoading(true);
-    const eventService = new EventService();
-    eventService.updateEvent(event)
-    .then((result: any) => {
-      setLoading(false);
-      history.push("/events-list");
-    });
+    const response = await eventService.updateEvent(event);
+    setLoading(false);
+    history.push("/events-list");
   }
 
   return (

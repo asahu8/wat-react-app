@@ -15,16 +15,16 @@ const EventsListing = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if( _.isEmpty(eventsList)) { showAllEvents(); }
+    // TODO: Handle this part efficiently later. For now fetching events for every landing!
+    // if( _.isEmpty(eventsList)) { showAllEvents(); }
+    showAllEvents();
   }, []);
 
   const showAllEvents = async() => {
     setLoading(true);
     let response = await eventService.getAllEvents();
-    setTimeout(() => {
-      assignEventsList(response.data);
-      setLoading(false);
-    }, 3000);
+    assignEventsList(response.data);
+    setLoading(false);
   }
 
   return(
