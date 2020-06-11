@@ -9,18 +9,17 @@ const CreateEvent = (props: any) => {
  const history = useHistory();
  const [loading, setLoading]  = useState(false);
 
- const submitHandler = (event: Event) => {
+ const submitHandler = async(event: Event) => {
   const eventService = new EventService();
   setLoading(true);
-  eventService.saveEvent(event)
-  .then(() => {
-    setLoading(false);
-    history.push("/events-list");
-  });
+  await eventService.saveEvent(event);
+  setLoading(false);
+  history.push("/events-list");
  }
 
+
   return(
-    <EventForm event= {new Event()} handleSubmit = {submitHandler} buttonLabel= {'Create Event'} loading={loading} />
+    <EventForm event={new Event()} handleSubmit = {submitHandler} buttonLabel= {'Create Event'} loading={loading} />
    );
 }
 

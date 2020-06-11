@@ -2,42 +2,28 @@ import { axiosClient } from "./axiosClient";
 import { Event } from "../model/event";
 
 export class EventService {
-  async getAllEvents() {
+  getAllEvents = async() => {
     return await axiosClient.get('events');
   }
 
-  async getEventCards() {
+  getEventCards = async() => {
     return await axiosClient.get('events/cards');
   }
 
-  async getEvent(eventID: number) {
+  getEvent = async(eventID: number) => {
     return await axiosClient.get(`events/${eventID}`);
   }
 
-  removeEvent(eventID: number) {
-    const requestOptions = {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
-    };
-    return fetch(`http://localhost:4001/events/${eventID}`, requestOptions);
+  removeEvent = async(eventID: number) =>{
+    return await axiosClient.delete(`events/${eventID}`);
   }
 
-  saveEvent(event: Event) {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( { event })
-    };
-    return fetch(`http://localhost:4001/events`, requestOptions);
+  saveEvent = async(event: Event)  => {
+    return await axiosClient.post(`events/`, event);
   }
 
-  updateEvent(event: Event) {
-    const requestOptions = {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( { event })
-    };
-    return fetch(`http://localhost:4001/events/${event.id}`, requestOptions);
+  updateEvent = async(event: Event) => {
+    return await axiosClient.post(`events/`, event);
   }
 
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { isEmpty } from 'lodash';
 import ValidationError from '../../Validation/ValidationError';
 
 const EventForm = (props: any) => {
@@ -17,7 +18,9 @@ const EventForm = (props: any) => {
 
   const onsubmit = (e: any) => {
     e.preventDefault();
-    props.handleSubmit(event);
+    if(isEmpty(errors)) {
+      props.handleSubmit(event);
+    }
   }
 
   const submitButtonClass = () => {
