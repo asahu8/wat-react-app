@@ -17,7 +17,7 @@ const Login = () => {
   let authBody: Auth;
 
   const handleLogin = async() => {
-    authBody = { username_or_email:  UsernameOrEmail,  password: password };
+    authBody = { usernameOrEmail: UsernameOrEmail,  password: password };
 
     try {
       await authService.login(authBody);

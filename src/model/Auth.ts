@@ -1,4 +1,4 @@
 export interface Auth{
-  username_or_email: string;
+  usernameOrEmail: string;
   password: string;
 }
