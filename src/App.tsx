@@ -1,10 +1,10 @@
-import React, {  useContext } from 'react';
+import React from 'react';
 import './App.css';
-import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css'
 
 import EventListToggleProvider from './context/EventListToggleContext';
-import AuthContextProvider, { AuthContext } from './context/AuthContext';
+import AuthContextProvider from './context/AuthContext';
 
 import Home from './containers/Home';
 import Header from './components/Header';
@@ -15,7 +15,7 @@ import EventsListing from './components/Event/Listing';
 import EditEvent from './components/Event/Setup/EditEvent';
 import CreateEvent from './components/Event/Setup/CreateEvent';
 import Login from './components/Auth/login';
-
+import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
   return (
@@ -42,16 +42,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-const PrivateRoute = ({component, ...rest}: any) => {
-  const { isUserLoggedIn } = useContext(AuthContext);
-  console.log(isUserLoggedIn());
-  const routeComponent = (props: any) => (
-    isUserLoggedIn()
-          ? React.createElement(component, props)
-          : <Redirect to={{pathname: '/login'}}/>
-  );
-  return <Route {...rest} render={routeComponent}/>;
-};
 
 export default App;
